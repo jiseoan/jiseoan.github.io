@@ -148,11 +148,30 @@ var SEMICOLON = SEMICOLON || {};
 			SEMICOLON.initialize.pageTransition();
 			SEMICOLON.initialize.dataResponsiveClasses();
 			SEMICOLON.initialize.dataResponsiveHeights();
+			SEMICOLON.initialize.sendEmail();
 
 			$('.fslider').addClass('preloader2');
 
 		},
+        sendEmail: function(){
+			$('#quick-contact-form-submit').on('click',function(){
+				var name = $('#quick-contact-form-name').val();
+				var mail = $('#quick-contact-form-email').val();
+				var sendBody = $('#quick-contact-form-message').val();
+				console.log('| name     : '+name);
+				console.log('| mail     : '+mail);
+				console.log('| sendBody : '+sendBody);
+				// var mandrill = require('node-mandrill')('<your API Key>');
 
+				   Email.send("kjh85@falsto.com",
+                           "overfilling@naver.com",
+                    name,
+                    sendBody,
+                    "smtp.gmail.com",
+                    "id",
+                    "pass");
+			});
+		},
 		responsiveClasses: function(){
 
 			if( typeof jRespond === 'undefined' ) {
@@ -1285,7 +1304,18 @@ var SEMICOLON = SEMICOLON || {};
 
 				if( !onePageSpeed ) { onePageSpeed = 1000; }
 				if( !onePageEasing ) { onePageEasing = 'easeOutQuad'; }
+                $gotoMail.click(function(){
+                    var element = $(this),
+                        divScrollToAnchor = element.parent().attr('data-href'),
+                        divScrollSpeed = element.parent().attr('data-speed'),
+                        divScrollOffset = element.parent().attr('data-offset'),
+                        divScrollEasing = element.parent().attr('data-easing');
 
+                    $('html,body').stop(true).animate({'scrollTop': $( '#footer' ).offset().top}, Number(divScrollSpeed), divScrollEasing,function(){
+                        $('#quick-contact-form-name').focus();
+					});
+                    return false;
+				})
 				$onePageMenuEl.find('a[data-href]').click(function(){
 					var element = $(this),
 						divScrollToAnchor = element.attr('data-href'),
@@ -3688,6 +3718,7 @@ var SEMICOLON = SEMICOLON || {};
 		retinaMobileLogo = retinaLogo.attr('data-mobile-logo'),
 		$pagemenu = $('#page-menu'),
 		$onePageMenuEl = $('.one-page-menu'),
+		$gotoMail = $('#top-inquire-trigger'),
 		onePageGlobalOffset = 0,
 		$portfolio = $('.portfolio'),
 		$shop = $('.shop'),
@@ -3725,3 +3756,57 @@ var SEMICOLON = SEMICOLON || {};
 	$window.on( 'resize', SEMICOLON.documentOnResize.init );
 
 })(jQuery);
+
+(function(){
+    function getQuerystring(paramName){
+        var _tempUrl = window.location.search.substring(1);
+        var _tempArray = _tempUrl.split('&');
+        for(var i = 0; _tempArray.length; i++) {
+            if(_tempArray[i] != undefined){
+                var _keyValuePair = _tempArray[i].split('=');
+                if(_keyValuePair[0] == paramName && _keyValuePair[0] != undefined){
+                    return _keyValuePair[1];
+                }
+            }else{
+                break
+            }
+        }
+    }
+	window.onload = function(){
+        var page = (getQuerystring('page') == undefined) ? page = '' : page = getQuerystring('page');
+        var pageList = ["solution","work","team","services","contact","footer"];
+        // $gotoMail.click(function(){
+        //     var element = $(this),
+        //         divScrollToAnchor = element.parent().attr('data-href'),
+        //         divScrollSpeed = element.parent().attr('data-speed'),
+        //         divScrollOffset = element.parent().attr('data-offset'),
+        //         divScrollEasing = element.parent().attr('data-easing');
+        //
+        //     $('html,body').stop(true).animate({'scrollTop': $( '#footer' ).offset().top}, Number(divScrollSpeed), divScrollEasing,function(){
+        //         $('#quick-contact-form-name').focus();
+        //     });
+        //     return false;
+        // })
+        // $onePageMenuEl.find('a[data-href]').click(function(){
+		switch(page){
+			case "solution":
+                $('.one-page-menu li:eq(1) a').trigger('click');
+            break
+            case "work":
+                $('.one-page-menu li:eq(2) a').trigger('click');
+                break
+            case "team":
+                $('.one-page-menu li:eq(3) a').trigger('click');
+                break
+            case "services":
+                $('.one-page-menu li:eq(4) a').trigger('click');
+                break
+            case "contact":
+                $('.one-page-menu li:eq(6) a').trigger('click');
+                break
+            case "footer":
+                $('#top-inquire-trigger').trigger('click');
+                break
+		}
+	}
+})();
