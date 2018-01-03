@@ -171,10 +171,10 @@ var SEMICOLON = SEMICOLON || {};
                     "jiseoan@jiseoan.com",
                     "홈페이지 문의",
                     text,
-                    "smtp.gmail.com",
-                    "falsto@falsto.com",
-                    "fagksrms",
-                    function done(message) { console.log("sent : "+message) }
+                    {
+                        token: "88d13ce9-c79b-4f85-9998-1aee2bc184fa",
+                        callback: function done(message) { console.log("sent : "+message) }
+                    }
                 );
 			});
 		},
