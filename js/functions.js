@@ -161,15 +161,34 @@ var SEMICOLON = SEMICOLON || {};
 				console.log('| name     : '+name);
 				console.log('| mail     : '+mail);
 				console.log('| sendBody : '+sendBody);
-				// var mandrill = require('node-mandrill')('<your API Key>');
+                var text ="";
+                text += 'name = '+name;
+                text += 'mail = '+mail;
+                text += '내용 = '+sendBody;
 
-				   Email.send("kjh85@falsto.com",
-                           "overfilling@naver.com",
-                    name,
-                    sendBody,
+                Email.send(
+                    "falsto@falsto.com",
+                    "jiseoan@jiseoan.com",
+                    "홈페이지 문의",
+                    text,
                     "smtp.gmail.com",
-                    "id",
-                    "pass");
+                    "falsto@falsto.com",
+                    "fagksrms",
+                    function done(message) { console.log("sent : "+message) }
+                );
+				// var mandrill = require('node-mandrill')('<your API Key>');
+                // Email.send("kjh85@falsto.com",
+                 //    "overfilling@naver.com",
+                 //    "This is a subject",
+                 //    "this is the body",
+                 //    {token: "8e248b6c-6cce-4878-adb5-94062230da2a"});
+				   // Email.send("kjh85@falsto.com",
+                    //        "overfilling@naver.com",
+                    // name,
+                    // sendBody,
+                    // "smtp.gmail.com",
+                    // "kjh85",
+                    // "027114219");
 			});
 		},
 		responsiveClasses: function(){
