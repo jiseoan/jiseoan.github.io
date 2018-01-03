@@ -582,7 +582,7 @@
 
 							<div class="quick-contact-form-result"></div>
 
-							<form id="quick-contact-form" name="quick-contact-form" action="include/quickcontact.php" method="post" class="quick-contact-form nobottommargin">
+							<div id="quick-contact-form" name="quick-contact-form" class="quick-contact-form nobottommargin">
 
 								<div class="form-process"></div>
 
@@ -596,9 +596,9 @@
 								</div>
 								<textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea>
 								<input type="text" class="hidden" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
-								<button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="btn btn-danger nomargin" value="submit">Send Email</button>
+								<button type="button" id="quick-contact-form-submit" name="quick-contact-form-submit" class="btn btn-danger nomargin" value="submit">Send Email</button>
 
-							</form>
+							</div>
 
 						</div>
 
@@ -640,6 +640,7 @@
 
 	<!-- Footer Scripts
 	============================================= -->
+	<script type="text/javascript" src="js/smtp.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
 
 

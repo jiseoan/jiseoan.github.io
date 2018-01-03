@@ -162,33 +162,20 @@ var SEMICOLON = SEMICOLON || {};
 				console.log('| mail     : '+mail);
 				console.log('| sendBody : '+sendBody);
                 var text ="";
-                text += 'name = '+name;
-                text += 'mail = '+mail;
-                text += '내용 = '+sendBody;
+                text += 'name : '+name+'<br>';
+                text += 'mail : '+mail+'<br>';
+                text += '내용 : '+sendBody+'<br>';
 
                 Email.send(
                     "falsto@falsto.com",
                     "jiseoan@jiseoan.com",
                     "홈페이지 문의",
                     text,
-                    "smtp.gmail.com",
-                    "falsto@falsto.com",
-                    "fagksrms",
-                    function done(message) { console.log("sent : "+message) }
+                    {
+                        token: "88d13ce9-c79b-4f85-9998-1aee2bc184fa",
+                        callback: function done(message) { console.log("sent : "+message) }
+                    }
                 );
-				// var mandrill = require('node-mandrill')('<your API Key>');
-                // Email.send("kjh85@falsto.com",
-                 //    "overfilling@naver.com",
-                 //    "This is a subject",
-                 //    "this is the body",
-                 //    {token: "8e248b6c-6cce-4878-adb5-94062230da2a"});
-				   // Email.send("kjh85@falsto.com",
-                    //        "overfilling@naver.com",
-                    // name,
-                    // sendBody,
-                    // "smtp.gmail.com",
-                    // "kjh85",
-                    // "027114219");
 			});
 		},
 		responsiveClasses: function(){
