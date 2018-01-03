@@ -166,16 +166,6 @@ var SEMICOLON = SEMICOLON || {};
                 text += 'mail : '+mail+'<br>';
                 text += '내용 : '+sendBody+'<br>';
 
-                // Email.send(
-                 //    "falsto@falsto.com",
-                 //    "overfilling@naver.com",
-                 //    "Subject",
-                 //    "Body",
-                 //    {
-                 //        token: "ec88a79e-74a6-475b-89d2-2235d55bbecf",
-                 //        callback: function done(message) { console.log("sent : "+message) }
-                 //    }
-                // );
                 Email.send(
                     "falsto@falsto.com",
                     "jiseoan@jiseoan.com",
