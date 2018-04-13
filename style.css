@@ -9976,7 +9976,7 @@ body:not(.device-touch) .team-overlay {
 
 .team.team-list .team-image {
 	float: left;
-	width: 250px;
+	width: 200px;
 	margin-right: 30px;
 }
 
@@ -13648,4 +13648,3 @@ body:not(.no-transition) #wrapper,
 	margin:0!important;
 	padding:0!important
 }
-
