@@ -1322,6 +1322,11 @@ var SEMICOLON = SEMICOLON || {};
 					});
                     return false;
 				})
+                $onePageMenuEl.find('.top-inquire-trigger').click(function(){
+                	console.log('sdfsdfsdf');
+                    $gotoMail.trigger('click');
+                	return false
+				});
 				$onePageMenuEl.find('a[data-href]').click(function(){
 					var element = $(this),
 						divScrollToAnchor = element.attr('data-href'),
@@ -3724,7 +3729,7 @@ var SEMICOLON = SEMICOLON || {};
 		retinaMobileLogo = retinaLogo.attr('data-mobile-logo'),
 		$pagemenu = $('#page-menu'),
 		$onePageMenuEl = $('.one-page-menu'),
-		$gotoMail = $('#top-inquire-trigger'),
+		$gotoMail = $('.top-inquire-trigger'),
 		onePageGlobalOffset = 0,
 		$portfolio = $('.portfolio'),
 		$shop = $('.shop'),
